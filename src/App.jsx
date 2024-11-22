@@ -28,13 +28,9 @@ function App() {
   return (
     <>
       {posts.map((el, i) => {
-        return (
-          <>
-            <Post title={el.title} body={el.body} index={i} />
-            <hr />
-          </>
-        );
+        return <Post title={el.title} body={el.body} index={i} key={el.id} />;
       })}
+      <hr />
     </>
   );
 }
