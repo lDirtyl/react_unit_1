@@ -10,3 +10,8 @@
 .secondary {
   color: purple;
 }
+
+.icon {
+  width: 120px;
+  color: red;
+}

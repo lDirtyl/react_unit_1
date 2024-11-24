@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import css from "./Title.module.css";
+import { ImAirplane } from "react-icons/im";
 
 const Title = ({ children, variant, tag }) => {
   const classnames = clsx(
@@ -10,11 +11,17 @@ const Title = ({ children, variant, tag }) => {
   return (
     <>
       {tag === "h1" ? (
-        <h1 className={classnames}>{children}</h1>
+        <h1 className={classnames}>
+          {children} <ImAirplane className={css.icon} />
+        </h1>
       ) : tag === "h2" ? (
-        <h2 className={classnames}>{children}</h2>
+        <h2 className={classnames}>
+          {children} <ImAirplane className={css.icon} />
+        </h2>
       ) : (
-        <p className={classnames}>{children}</p>
+        <p className={classnames}>
+          {children} <ImAirplane className={css.icon} />
+        </p>
       )}
     </>
   );

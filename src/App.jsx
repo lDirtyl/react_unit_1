@@ -2,6 +2,7 @@
 import Button from "./components/Button/Button";
 import Container from "./components/Container/Container";
 import Title from "./components/Title/Title";
+import { ImAirplane } from "react-icons/im";
 
 // import Post from "./components/Post";
 // const posts = [
@@ -38,14 +39,24 @@ function App() {
       <Container>
         <Title variant="primary">asad</Title>
       </Container>
+      <Container>
+        <Title variant="primary">asad</Title>
+      </Container>
+      <Container>
+        <Button size="lg" variant="secondary">
+          click
+        </Button>
+      </Container>
 
-      <Title variant="primary">asad</Title>
-      <Button size="lg" variant="secondary">
-        click
-      </Button>
-      <Button size="md" variant="primary">
-        click
-      </Button>
+      <Container>
+        <Button size="md" variant="primary">
+          click
+        </Button>
+      </Container>
+      <hr />
+      <Container>
+        <ImAirplane size={48} color="blue" />
+      </Container>
     </>
   );
 }
