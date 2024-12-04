@@ -1,24 +1,21 @@
 import { useState } from "react";
 
+import Clicker from "./components/Clicker/Clicker.jsx";
+import Clicker2 from "./components/Clicker2/Clicker2.jsx";
+
 function App() {
   //Button
-  const [value, setValue] = useState(0);
-  const [value2, setValue2] = useState(0);
+  const [value, setValue] = useState(10);
 
   // let value = 10;
   const handleClick = () => {
     setValue(value + 1);
   };
-  const handleClick2 = () => {
-    setValue2(value2 + 1);
-  };
 
   return (
     <>
-      <h1>{value}</h1>
-      <button onClick={handleClick}>Click</button>
-      <h1>{value2}</h1>
-      <button onClick={handleClick2}>Click</button>
+      <Clicker2 />
+      <Clicker />
     </>
   );
 }
