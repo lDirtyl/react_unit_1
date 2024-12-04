@@ -1,0 +1,33 @@
+.btn {
+  border: 2px solid black;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: goldenrod;
+  font-size: 12px;
+}
+
+.primary {
+  background-color: aquamarine;
+}
+
+.secondary {
+  background-color: gray;
+}
+
+.md {
+  padding: 12px;
+  font-size: 12px;
+}
+
+.lg {
+  padding: 14px;
+  font-size: 16px;
+}
+
+.sm {
+  padding: 6px;
+  font-size: 8px;
+}

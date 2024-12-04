@@ -1,0 +1,17 @@
+.title {
+  font-size: 42px;
+  color: red;
+}
+
+.primary {
+  color: aqua;
+}
+
+.secondary {
+  color: purple;
+}
+
+.icon {
+  width: 120px;
+  color: red;
+}
