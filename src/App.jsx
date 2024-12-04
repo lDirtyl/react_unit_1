@@ -1,21 +1,43 @@
 import { useState } from "react";
 
-import Clicker from "./components/Clicker/Clicker.jsx";
-import Clicker2 from "./components/Clicker2/Clicker2.jsx";
+// const Clicker = () => {
+//   const [value2, setValue2] = useState(100);
 
-function App() {
-  //Button
-  const [value, setValue] = useState(10);
+//   const handleClick2 = () => {
+//     setValue2(value2 + 1);
+//   };
 
-  // let value = 10;
-  const handleClick = () => {
-    setValue(value + 1);
-  };
-
+//   return (
+//     <>
+//       <h1>{value2}</h1>
+//       <button onClick={handleClick2}>Click 2</button>
+//     </>
+//   );
+// };
+const Clicker2 = ({ value, handleSetValue }) => {
+  // const handleClick = () => {
+  //   handleSetValue(1000);
+  // };
   return (
     <>
-      <Clicker2 />
-      <Clicker />
+      <h1>{value}</h1>
+      <button onClick={handleSetValue}>Click 2</button>
+    </>
+  );
+};
+//
+// =================================================================
+//
+
+function App() {
+  const [value, setValue] = useState(10);
+  const handleSetValue = () => {
+    setValue(value + 1);
+  };
+  return (
+    <>
+      <Clicker2 value={value} handleSetValue={handleSetValue} />
+      <Clicker2 value={value} handleSetValue={handleSetValue} />
     </>
   );
 }
