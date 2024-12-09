@@ -1,42 +1,51 @@
 import { useEffect, useState } from "react";
-import Timer from "./components/Timer/Timer.jsx";
+import data from "../posts.json";
+
+import Paginator from "./components/Paginator/Paginator";
+import Poster from "./components/Poster/Poster";
+
+const generateDefaultState = () => {
+  const currentPost = localStorage.getItem("currentPost");
+  if (currentPost) {
+    return JSON.parse(currentPost);
+  }
+  return 1;
+};
 
 const App = () => {
-  const [click, setClick] = useState(0);
-  const [click2, setClick2] = useState(0);
-  const [isShow, setIsShow] = useState(false);
+  const [currentPost, setCurrentPost] = useState(generateDefaultState);
 
-  //Mount
+  const postsCount = data.length;
+  const post = data[currentPost - 1];
+
+  const handlePrev = () => {
+    if (currentPost === 1) return;
+    setCurrentPost(currentPost - 1);
+  };
+
+  const handleNext = () => {
+    if (currentPost === postsCount) return;
+    setCurrentPost(currentPost + 1);
+  };
+
   useEffect(() => {
-    console.log("effect");
-    const clicks = localStorage.getItem("clicks");
-    if (clicks !== null) {
-      setClick(JSON.parse(clicks));
-    }
-  }, []);
-
-  // Mount + Update
-  useEffect(() => {
-    console.log("click", click);
-    if (click !== 0) localStorage.setItem("clicks", click);
-  }, [click]);
-
-  // Update
-  useEffect(() => {
-    if (click2 === 0) return;
-    console.log("click2", click2);
-  }, [click2]);
-
-  console.log("outsideClick");
+    localStorage.setItem("currentPost", currentPost);
+  }, [currentPost]);
 
   return (
-    <div>
-      <button onClick={() => setClick(click + 1)}>{click}</button>
-      <button onClick={() => setClick2(click2 + 1)}>{click2}</button>
-      <br />
-      <button onClick={() => setIsShow(!isShow)}>click</button>
-      {isShow && <Timer />}
-    </div>
+    <>
+      <Paginator
+        postCount={postsCount}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+        currentPost={currentPost}
+        postsCount={postsCount}
+      />
+
+      <hr />
+      <hr />
+      <Poster post={post} />
+    </>
   );
 };
 
