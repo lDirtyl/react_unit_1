@@ -9,11 +9,16 @@ const App = () => {
   //Mount
   useEffect(() => {
     console.log("effect");
+    const clicks = localStorage.getItem("clicks");
+    if (clicks !== null) {
+      setClick(JSON.parse(clicks));
+    }
   }, []);
 
   // Mount + Update
   useEffect(() => {
     console.log("click", click);
+    if (click !== 0) localStorage.setItem("clicks", click);
   }, [click]);
 
   // Update
