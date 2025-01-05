@@ -1,9 +1,14 @@
 import ControlForm from './components/ControlForm/ControlForm';
 
 const App = () => {
+  const toSubmit = (data) => {
+    console.log("data", data);
+  }
+    
+
   return (
     <div>
-      <ControlForm />
+      <ControlForm toSubmit={toSubmit}/>
     </div>
   );
 };

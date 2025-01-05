@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 
-const ControlForm = () => {
+const ControlForm = ({toSubmit}) => {
   const firstNameId = useId();
   const lastNameId = useId();
 
@@ -12,6 +11,7 @@ const ControlForm = () => {
 
   const handleChange = ({ target: { value, name } }) => {
     setFormValue({
+        // Validate the value and other properties
       ...formValue,
       [name]: value,
     });
@@ -19,7 +19,7 @@ const ControlForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(formValue);
+    toSubmit(formValue);
   };
 
   return (
