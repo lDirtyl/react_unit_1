@@ -1,52 +1,20 @@
-import { useEffect, useState } from "react";
-import data from "../posts.json";
-
-import Paginator from "./components/Paginator/Paginator";
-import Poster from "./components/Poster/Poster";
-
-const generateDefaultState = () => {
-  const currentPost = localStorage.getItem("currentPost");
-  if (currentPost) {
-    return JSON.parse(currentPost);
-  }
-  return 1;
-};
-
+import Form from './components/Form/Form';
 const App = () => {
-  const [currentPost, setCurrentPost] = useState(generateDefaultState);
-
-  const postsCount = data.length;
-  const post = data[currentPost - 1];
-
-  const handlePrev = () => {
-    if (currentPost === 1) return;
-    setCurrentPost(currentPost - 1);
+  const handleSubmit = data => {
+    console.log('data', data);
   };
-
-  const handleNext = () => {
-    if (currentPost === postsCount) return;
-    setCurrentPost(currentPost + 1);
+  const handleSubmit2 = data => {
+    console.log('data!!!!!!!!!!!!1', data);
   };
-
-  useEffect(() => {
-    localStorage.setItem("currentPost", currentPost);
-  }, [currentPost]);
 
   return (
-    <>
-      <Paginator
-        postCount={postsCount}
-        handlePrev={handlePrev}
-        handleNext={handleNext}
-        currentPost={currentPost}
-        postsCount={postsCount}
-      />
-
-      <hr />
-      <hr />
-      <Poster post={post} />
-    </>
+    <div>
+      <Form submit={handleSubmit} />
+      <br />
+      <br />
+      <br />
+      <Form submit={handleSubmit2} />
+    </div>
   );
 };
-
 export default App;
