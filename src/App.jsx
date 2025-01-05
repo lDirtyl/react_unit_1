@@ -1,21 +1,47 @@
-import Field from './components/Field/Field';
-import FieldSelect from './components/FieldSelect/FieldSelect';
+import { useState } from 'react';
+import { useId } from 'react';
 
 const App = () => {
-  // const [inputValue, setInputValue] = useState('');
-  // const handleChange = ({ target: { value } }) => {
-  //   console.log('value', value);
-  //   if (value.includes('@')) return;
-  //   setInputValue(value);
+  const firstNameId = useId();
+  const lastNameId = useId();
 
-  const change = value => {
-    console.log('value', value);
+  const [firstNameValue, setFirstNameValue] = useState('');
+  const [lastNameValue, setLastNameValue] = useState('');
+
+  const habdleChangeFirstName = ({target: {value}}) => {
+    //
+    setFirstNameValue(value);
+  };
+  const habdleChangeLastName = ({target: {value}}) => {
+    //
+    setLastNameValue(value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
   };
 
   return (
     <div>
-      <Field change={change} />
-      <FieldSelect />
+      <form onSubmit={handleSubmit}>
+        <label htmlFor={firstNameId}>firstName</label>
+        <input
+          type='text'
+          id={firstNameId}
+          value={firstNameValue}
+          onChange={habdleChangeFirstName}
+        />
+        <br />
+        <label htmlFor={lastNameId}>lastName</label>
+        <input
+          type='text'
+          id={lastNameId}
+          value={lastNameValue}
+          onChange={habdleChangeLastName}
+        />
+        <br />
+        <button type='submit'>click</button>
+      </form>
     </div>
   );
 };
