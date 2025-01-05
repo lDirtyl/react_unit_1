@@ -1,14 +1,10 @@
-import ControlForm from './components/ControlForm/ControlForm';
+import FeedbackForm from "./components/FeedbackForm/FeedbackForm";
 
 const App = () => {
-  const toSubmit = (data) => {
-    console.log("data", data);
-  }
-    
-
+  
   return (
     <div>
-      <ControlForm toSubmit={toSubmit}/>
+      <FeedbackForm />  
     </div>
   );
 };
