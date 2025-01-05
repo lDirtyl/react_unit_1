@@ -1,5 +1,19 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useId } from 'react';
+import * as Yup from 'yup';
+
+const FeedbackSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  email: Yup.string().email('Must be a valid email!').required('Required'),
+  message: Yup.string()
+    .min(3, 'Too short')
+    .max(256, 'Too long')
+    .required('Required'),
+  level: Yup.string().oneOf(['good', 'neutral', 'bad']).required('Required'),
+});
 
 const initialValues = {
   username: '',
@@ -19,15 +33,22 @@ const FeedbackForm = () => {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={FeedbackSchema}
+    >
       <Form>
         <label htmlFor={nameFieldId}>Username</label>
         <Field type='text' name='username' id={nameFieldId} />
+        <ErrorMessage name='username' component='span' />
         <br />
         <label htmlFor={emailFieldId}>Email</label>
         <Field type='text' name='email' id={emailFieldId} />
+        <ErrorMessage name='email' component='span' />
         <br />
         <Field as='textarea' name='message' id={msgFieldId} rows='5' />
+        <ErrorMessage name='message' component='span' />
         <br />
         <label htmlFor={levelFieldId}>Service satisfaction level</label>
         <Field as='select' name='level' id='levelFieldId'>
@@ -35,6 +56,7 @@ const FeedbackForm = () => {
           <option value='neutral'>Neutral</option>
           <option value='bad'>Bad</option>
         </Field>
+        <ErrorMessage name='level' component='span' />
         <br />
         <button type='submit'>Submit</button>
       </Form>

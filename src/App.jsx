@@ -1,11 +1,4 @@
-import FeedbackForm from "./components/FeedbackForm/FeedbackForm";
-
 const App = () => {
-  
-  return (
-    <div>
-      <FeedbackForm />  
-    </div>
-  );
+  return <div></div>;
 };
 export default App;
