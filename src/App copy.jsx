@@ -1,15 +1,13 @@
-import ControlForm from './components/ControlForm/ControlForm';
+// import FormikForm from './components/FormikForm/FormikForm';
 
-const App = () => {
-  const toSubmit = (data) => {
-    console.log("data", data);
-  }
-    
-
-  return (
-    <div>
-      <ControlForm toSubmit={toSubmit}/>
-    </div>
-  );
-};
-export default App;
+// const App = () => {
+//   const handlesubmit = (data) => {
+//     console.log(data);
+//   }
+//   return (
+//     <div>
+//       <FormikForm toSubmit={handlesubmit}/>
+//     </div>
+//   );
+// };
+// export default App;
