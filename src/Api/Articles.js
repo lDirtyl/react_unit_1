@@ -6,11 +6,11 @@ export const getArticles = async () => {
     const {data} = await axios('/search?query=react')
     return data
 }
+export const getSingleArticles = async (id) => {
+    const {data} = await axios(`/items/${id}`)
+    return data
+}
 
-// export const searchArticles = async (query) => {
-//     const {data} = await axios(`/search?query=${query}`)
-//     return data
-// }
 export const searchArticles = async (query, page) => {
     const {data} = await axios('/search', {
         params: {
