@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getSingleArticles } from '../../Api/Articles';
 
 const ArticlesDetails = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
+
+  const location = useLocation();
+
+  const backLink = useRef(location.state)
 
   useEffect(() => {
     const fetching = async () => {
@@ -21,10 +25,16 @@ const ArticlesDetails = () => {
   return (
     article && (
       <div>
+        <hr />
+        <hr />
+        <Link to={backLink.current ?? '/articles'}>Back</Link>
+        <hr />
+        <hr />
         <h2>{article.title}</h2>
         <p>url: {article.url}</p>
         <p>author: {article.author}</p>
         <br />
+        {/* <Link to='somePath' state={location.state}>To some path</Link> */}
         <Link to='somePath'>To some path</Link>
         <br />
         <br />
